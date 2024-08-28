@@ -1,5 +1,7 @@
 #include "windowClass.h"
 
+#include <iostream>
+
 LRESULT CALLBACK WindowProcedure(HWND par_Hwnd, UINT par_Msg, WPARAM par_W, LPARAM par_L)
 {
 	switch (par_Msg)
@@ -13,7 +15,15 @@ LRESULT CALLBACK WindowProcedure(HWND par_Hwnd, UINT par_Msg, WPARAM par_W, LPAR
 	return DefWindowProc(par_Hwnd, par_Msg, par_W, par_L);
 }
 
-windowClass::windowClass() {}
+windowClass::windowClass() 
+{ 
+	mbr_hWnd = { 0 };
+	mbr_Result = NULL;
+	mbr_WindowTitle = L"I should be on the title bar";
+	mbr_WindowStyle = WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU;
+	mbr_ClassName = L"ClassName";
+	mbr_Rect = { 0, 0, 1024, 768 };
+}
 
 int windowClass::Create()
 {	
